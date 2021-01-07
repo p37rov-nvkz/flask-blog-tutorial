@@ -8,6 +8,23 @@ from app import db
 def slugify(s):
     return zlib.crc32(s.encode('cp1251'))
 
+# TODO:
+'''
+Написать тесты для этого кода:
+
+>>> import models
+THIS APP IS IN DEBUG MODE. YOU SHOULD NOT SEE THIS IN PRODUCTION.
+>>> from app import db
+>>> db.create_all()
+>>> from models import Post
+>>> p = Post(title='First post', body='First post body')
+>>> db.session.add(p)
+>>> db.session.commit()
+>>> p
+<Post id: 1, title: First post>
+>>> p.slug
+slug
+'''
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
