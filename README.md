@@ -17,10 +17,9 @@ DB_USER, DB_PASSWORD, DB_NAME
 
 #Создание таблицы
 
-
-import models
-from app import db
-db.create_all()
+1. import models
+2. from app import db
+3. db.create_all()
 
 
 #Запуск приложения
