@@ -16,9 +16,10 @@ DB_USER, DB_PASSWORD, DB_NAME
 2. Записать в файл: import os; os.environ['FOO'] = 'bar'
 
 #Создание таблицы
->>> import models
->>> from app import db
->>> db.create_all()
+
+import models
+from app import db
+db.create_all()
 
 
 #Запуск приложения
