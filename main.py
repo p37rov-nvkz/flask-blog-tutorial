@@ -1,6 +1,6 @@
 #project
 from app import app
-from app import d
+from app import db
 import view
 
 
