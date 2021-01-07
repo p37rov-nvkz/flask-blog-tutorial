@@ -12,6 +12,9 @@ create database flask_blog_tutorial_db character set utf8 collate utf8_unicode_c
 #Определить переменные окружения:
 DB_USER, DB_PASSWORD, DB_NAME
 
+1. Создать файл: ./venv/lib/python3.8/site-packages/_set_envs.pth
+2. Записать в файл: import os; os.environ['FOO'] = 'bar'
+
 #Создание таблицы
 >>> import models
 >>> from app import db
