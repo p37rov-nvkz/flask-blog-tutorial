@@ -12,6 +12,12 @@ create database flask_blog_tutorial_db character set utf8 collate utf8_unicode_c
 #Определить переменные окружения:
 DB_USER, DB_PASSWORD, DB_NAME
 
+#Создание таблицы
+>>> import models
+>>> from app import db
+>>> db.create_all()
+
+
 #Запуск приложения
 
 pip install -r requirements.txt
