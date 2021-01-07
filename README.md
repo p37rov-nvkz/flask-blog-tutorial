@@ -9,6 +9,9 @@ https://www.digitalocean.com/community/tutorials/mysql-ubuntu-18-04-ru
 
 create database flask_blog_tutorial_db character set utf8 collate utf8_unicode_ci;
 
+#Определить переменные окружения:
+DB_USER, DB_PASSWORD, DB_NAME
+
 #Запуск приложения
 
 pip install -r requirements.txt
