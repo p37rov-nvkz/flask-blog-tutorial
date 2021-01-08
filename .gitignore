@@ -221,4 +221,4 @@ gaenv_lib/
 appengine_config.py
 
 # Migration
-migration/
+migrations/
