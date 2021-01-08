@@ -48,6 +48,10 @@ Post query filter all:
 >>> p3 = Post.query.filter(Post.title=="!").all()
 '''
 
+# ManyToMany realization
+post_tags = db.Table('post_tags',
+                     db.Column('post_id', db.Integer, db.ForeignKey('post.id')),
+                     db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')))
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(140))
