@@ -1,6 +1,5 @@
 #project
 from config import DevelopmentConfig
-from posts.blueprint import posts
 #flask
 from flask import Flask
 #flask_sqlalchemy
