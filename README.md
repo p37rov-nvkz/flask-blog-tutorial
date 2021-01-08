@@ -21,6 +21,15 @@ DB_USER, DB_PASSWORD, DB_NAME
 2. from app import db
 3. db.create_all()
 
+#Выполнение миграций
+    #Первоначальная инициализация
+        1. python manage.py db init
+    #Создание миграции
+        1. python manage.py db migrate
+    #Выполнение миграции
+        1. python manage.py db upgrade
+
+
 
 #Запуск приложения
 
