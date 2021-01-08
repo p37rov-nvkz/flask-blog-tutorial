@@ -46,6 +46,35 @@ Post query filter all:
 Поиск точного соответствия:
 
 >>> p3 = Post.query.filter(Post.title=="!").all()
+
+Работа с обьектами BaseQuery:
+
+>>> post1 = Post.query.filter(Post.id==1)
+>>> post1
+<flask_sqlalchemy.BaseQuery object at 0x7feb8bf03fa0>
+>>> post1.count()
+1
+>>> post1 = post1.first()
+>>> post1
+<Post id: 1, title: First post>
+
+Ассоциирование поста с тегом:
+
+>>> from models import Post, Tag
+>>> t = Tag.query.first()
+>>> post1.tags
+[]
+>>> post1.tags.append(t)
+>>> post1.tags
+[<Tag id: 1, name: flask>]
+
+>>> t.posts
+<sqlalchemy.orm.dynamic.AppenderBaseQuery object at 0x7feb8ed3d040>
+>>> t.posts.all()
+[<Post id: 1, title: First post>]
+>>> t.posts.first()
+<Post id: 1, title: First post>
+
 '''
 
 # ManyToMany implementation
@@ -64,7 +93,7 @@ class Post(db.Model):
         super(Post, self).__init__(*args, **kwargs)
         self.generate_slug()
 
-    tags = db.relationship('Tag', secondary=post_tags, backref=db.backref('posts', lazy='dynamic'))
+    tags = db.relationship('Tag', secondary=post_tags, backref=db.backref('posts', lazy='dynamic')) #lazy='dynamic' return BaseQuery
 
     def generate_slug(self):
         if self.title:
