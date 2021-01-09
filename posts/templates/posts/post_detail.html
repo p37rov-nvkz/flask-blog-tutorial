@@ -10,5 +10,12 @@
 
 
 {% block content %}
-    {{ post.body }}
+    <div class="tags">
+        {% for tag in tags %}
+            <span class="badge bg-success">{{ tag.name }}</span>
+        {% endfor %}
+    </div>
+    <div class="main-content">
+        {{ post.body }}
+    </div>
 {% endblock %}
