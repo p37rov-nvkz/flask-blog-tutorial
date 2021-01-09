@@ -97,7 +97,7 @@ class Post(db.Model):
 
     def generate_slug(self):
         if self.title:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.title + self.body)
 
 
     def __repr__(self):
