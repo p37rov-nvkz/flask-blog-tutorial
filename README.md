@@ -15,7 +15,7 @@ DB_USER, DB_PASSWORD, DB_NAME
 1. Создать файл: ./venv/lib/python3.8/site-packages/_set_envs.pth
 2. Записать в файл: import os; os.environ['FOO'] = 'bar'
 
-#Создание таблицы
+#Создание таблиц
 
 1. import models
 2. from app import db
@@ -33,6 +33,7 @@ DB_USER, DB_PASSWORD, DB_NAME
 1. from app import db
 2. from app import user_datastore
 3. user_datastore.create_user(email='email', password='password')
+4. db.session.commit()
 
 #Запуск приложения
 
