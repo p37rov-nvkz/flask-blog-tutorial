@@ -29,7 +29,10 @@ DB_USER, DB_PASSWORD, DB_NAME
     #Выполнение миграции
         1. python manage.py db upgrade
 
-
+#Создание пользователя
+1. from app import db
+2. from app import user_datastore
+3. user_datastore.create_user(email='email', password='password')
 
 #Запуск приложения
 
