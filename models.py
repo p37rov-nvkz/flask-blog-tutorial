@@ -2,6 +2,9 @@
 from datetime import datetime
 import zlib
 
+#flask_security
+from flask_security import UserMixin, RoleMixin
+
 #project
 from app import db
 
@@ -116,3 +119,11 @@ class Tag(db.Model):
     def __repr__(self):
         return f'{self.name}'
 
+
+# Flask security model's
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer(), primary_key=True)
+    email = db.Column(db.String(100), unique=True)
+    password = db.Column(db.String(255))
+    active = db.Column(db.Boolean())
