@@ -36,14 +36,24 @@ def create_post():
 # http://localhost/blog
 @posts.route('/')
 def index():
+    # Pagination
+    page = request.args.get('page')
+    if page and page.isdigit():
+        page = int(page)
+    else:
+        page = 1
+
     # Search
     q = request.args.get('q')
     if q:
         posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q)).all()
     else:
         posts = Post.query.order_by(Post.created.desc())
-    return render_template('posts/index.html', posts=posts)
 
+    # Pagination
+    pages = posts.paginate(page=page, per_page=5)
+
+    return render_template('posts/index.html', posts=posts, pages=pages)
 
 # http://localhost/blog /<slug>
 @posts.route('/<slug>')
@@ -55,8 +65,13 @@ def post_detail(slug):
         return render_template('posts/index.html', posts=posts)
 
     post = Post.query.filter(Post.slug==slug).first()
-    tags = post.tags
-    return render_template('posts/post_detail.html', post=post, tags=tags)
+    if post:
+        tags = post.tags
+        return render_template('posts/post_detail.html', post=post, tags=tags)
+    else:
+        return redirect(url_for('posts.index'))
+
+
 
 
 
