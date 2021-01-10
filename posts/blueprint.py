@@ -32,6 +32,22 @@ def create_post():
     form = PostForm()
     return render_template('posts/create.html', form=form)
 
+@posts.route('/<slug>/edit', methods=['POST', 'GET'])
+def edit_post(slug):
+    post = Post.query.filter(Post.slug==slug).first()
+
+    if request.method == 'POST':
+        # Наполнение формы данными
+        form = PostForm(formdata=request.form, obj=post)
+        # Получение новых данных
+        form.populate_obj(post)
+        db.session.commit()
+
+        return redirect(url_for('posts.post_detail', slug=post.slug))
+
+    form = PostForm(obj=post)
+    return render_template('posts/edit.html', post=post, form=form)
+
 
 # http://localhost/blog
 @posts.route('/')
