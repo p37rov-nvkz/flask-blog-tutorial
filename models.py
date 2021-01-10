@@ -114,5 +114,5 @@ class Tag(db.Model):
         self.slug = slugify(self.name)
 
     def __repr__(self):
-        return f'{self.name}>'
+        return f'{self.name}'
 
