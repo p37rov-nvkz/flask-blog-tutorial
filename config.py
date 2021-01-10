@@ -16,6 +16,8 @@ class DevelopmentConfig(object):
 
     # Flask-admin
     SECRET_KEY = 'secret'
+    #Flask-security
+    SECURITY_PASSWORD_SALT = 'Sea salt'
     #SQLALCHEMY_ECHO = True
     #ASSETS_DEBUG = True
     #DATABASE = 'teamprojet_db'
