@@ -101,7 +101,7 @@ class Post(db.Model):
 
 
     def __repr__(self):
-        return f'title: {self.title}>'
+        return f'title: {self.title}'
 
 
 class Tag(db.Model):

@@ -32,6 +32,7 @@ def create_post():
     form = PostForm()
     return render_template('posts/create.html', form=form)
 
+'''
 @posts.route('/<slug>/edit', methods=['POST', 'GET'])
 def edit_post(slug):
     post = Post.query.filter(Post.slug==slug).first()
@@ -47,7 +48,7 @@ def edit_post(slug):
 
     form = PostForm(obj=post)
     return render_template('posts/edit.html', post=post, form=form)
-
+'''
 
 # http://localhost/blog
 @posts.route('/')
