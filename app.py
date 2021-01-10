@@ -37,7 +37,7 @@ admin = Admin(app)
 admin.add_view(ModelView(Post, db.session))
 admin.add_view(ModelView(Tag, db.session))
 
-user_datastore = SQLAlchemySessionUserDatastore(db, User, Role)
+user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
 security = Security(app, user_datastore)
 
 
