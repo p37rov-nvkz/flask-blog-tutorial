@@ -18,6 +18,7 @@ class DevelopmentConfig(object):
     SECRET_KEY = 'secret'
     #Flask-security
     SECURITY_PASSWORD_SALT = 'Sea salt'
+    SECURITY_PASSWORD_HASH = 'bcrypt'
     #SQLALCHEMY_ECHO = True
     #ASSETS_DEBUG = True
     #DATABASE = 'teamprojet_db'
