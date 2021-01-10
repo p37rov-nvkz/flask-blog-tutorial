@@ -9,8 +9,12 @@ from flask_script import Manager
 #flask_admin
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
+#flask_security
+from flask_security import SQLAlchemySessionUserDatastore
+from flask_security import Security
 #project
 from config import DevelopmentConfig
+
 
 
 app = Flask(__name__)
@@ -21,6 +25,9 @@ db = SQLAlchemy(app)
 from models import Post
 from models import Tag
 
+from models import User
+from models import Role
+
 
 migrate = Migrate(app, db)
 manager = Manager(app)
@@ -30,6 +37,7 @@ admin = Admin(app)
 admin.add_view(ModelView(Post, db.session))
 admin.add_view(ModelView(Tag, db.session))
 
-
+user_datastore = SQLAlchemySessionUserDatastore(db, User, Role)
+security = Security(app, user_datastore)
 
 
