@@ -14,6 +14,8 @@ class DevelopmentConfig(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@localhost/{DB_NAME}"
 
+    # Flask-admin
+    SECRET_KEY = 'secret'
     #SQLALCHEMY_ECHO = True
     #ASSETS_DEBUG = True
     #DATABASE = 'teamprojet_db'
