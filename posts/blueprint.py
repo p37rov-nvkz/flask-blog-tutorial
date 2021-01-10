@@ -5,6 +5,9 @@ from flask import request
 from flask import redirect
 from flask import url_for
 
+#flask_security
+from flask_security import login_required
+
 #project
 from models import Post
 from .forms import PostForm
@@ -15,6 +18,7 @@ posts = Blueprint('posts', __name__, template_folder='templates', static_folder=
 
 # http://localhost/blog /create
 @posts.route('/create', methods=['POST', 'GET'])
+@login_required
 def create_post():
     if request.method == 'POST':
         title = request.form['title']
@@ -32,8 +36,8 @@ def create_post():
     form = PostForm()
     return render_template('posts/create.html', form=form)
 
-'''
 @posts.route('/<slug>/edit', methods=['POST', 'GET'])
+@login_required
 def edit_post(slug):
     post = Post.query.filter(Post.slug==slug).first()
 
@@ -48,7 +52,7 @@ def edit_post(slug):
 
     form = PostForm(obj=post)
     return render_template('posts/edit.html', post=post, form=form)
-'''
+
 
 # http://localhost/blog
 @posts.route('/')
