@@ -35,6 +35,20 @@ DB_USER, DB_PASSWORD, DB_NAME
 3. user_datastore.create_user(email='email', password='password')
 4. db.session.commit()
 
+#Создание роли
+1. from app import db
+2. from models import User, Role
+3. from app import user_datastore
+4. user = User.query.first()
+5. user.email
+'p37rov.nvkz@gmail.com'
+6. user_datastore.create_role(name='admin', description='administrator')
+<Role (transient 139985834980736)>
+7. db.session.commit()
+8.role = Role.query.first()
+9. user_datastore.add_role_to_user(user, role)
+True
+10. db.session.commit()
 #Запуск приложения
 
 pip install -r requirements.txt
