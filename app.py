@@ -33,19 +33,18 @@ from models import Tag
 from models import User
 from models import Role
 
-class AdminView(ModelView):
+class AdminMixin:
     def is_accessible(self):
         return current_user.has_role('admin')
 
     def inaccessible_callback(self, name, **kwargs):
         return redirect(url_for('security.login', next=request.url))
 
-class HomeAdminView(AdminIndexView):
-    def is_accessible(self):
-        return current_user.has_role('admin')
+class AdminView(AdminMixin, ModelView):
+    pass
 
-    def inaccessible_callback(self, name, **kwargs):
-        return redirect(url_for('security.login', next=request.url))
+class HomeAdminView(AdminMixin, AdminIndexView):
+    pass
 
 
 
