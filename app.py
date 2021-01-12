@@ -40,6 +40,11 @@ class AdminMixin:
     def inaccessible_callback(self, name, **kwargs):
         return redirect(url_for('security.login', next=request.url))
 
+class BaseModelView(ModelView):
+    def on_model_change(self, form, model, is_created):
+        model.generate_slug()
+        return super(BaseModelView, self).on_model_change(form, model, is_created)
+
 class AdminView(AdminMixin, ModelView):
     pass
 
