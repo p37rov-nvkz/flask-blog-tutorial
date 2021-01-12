@@ -52,10 +52,10 @@ class HomeAdminView(AdminMixin, AdminIndexView):
     pass
 
 class PostAdminView(AdminMixin, BaseModelView):
-    pass
+    form_columns = ['title','tags', 'body']
 
 class TagAdminView(AdminMixin, BaseModelView):
-    pass
+    form_columns = ['name', 'posts']
 
 
 
