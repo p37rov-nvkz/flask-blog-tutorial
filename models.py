@@ -112,6 +112,10 @@ class Tag(db.Model):
     name = db.Column(db.String(100))
     slug = db.Column(db.String(100))
 
+    def generate_slug(self):
+        if self.name:
+            self.slug = slugify(self.name)
+
     def __init__(self, *args, **kwargs):
         super(Tag, self).__init__(*args, **kwargs)
         self.slug = slugify(self.name)
