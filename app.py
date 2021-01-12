@@ -54,6 +54,8 @@ class HomeAdminView(AdminMixin, AdminIndexView):
 class PostAdminView(AdminMixin, BaseModelView):
     pass
 
+class TagAdminView(AdminMixin, BaseModelView):
+    pass
 
 
 
@@ -63,7 +65,7 @@ manager.add_command('db', MigrateCommand)
 
 admin = Admin(app, 'FlaskApp', url='/', index_view=HomeAdminView(name='Home'))
 admin.add_view(PostAdminView(Post, db.session))
-admin.add_view(AdminView(Tag, db.session))
+admin.add_view(TagAdminView(Tag, db.session))
 
 user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
 security = Security(app, user_datastore)
