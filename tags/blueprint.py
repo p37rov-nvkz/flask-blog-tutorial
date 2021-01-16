@@ -31,7 +31,7 @@ def tag_detail(slug):
     tag = Tag.query.filter(Tag.slug==slug).first()
     if tag:
         posts = tag.posts.all()
-        return render_template('tags/tag_detail.html', posts=posts, tag=tag)
+        return render_template('tags/detail.html', posts=posts, tag=tag)
     else:
         return redirect(url_for('tags.index'))
 

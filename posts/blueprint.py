@@ -5,6 +5,8 @@ from flask import request
 from flask import redirect
 from flask import url_for
 
+#WTForm
+from flask_wtf import FlaskForm
 #flask_security
 from flask_security import login_required
 
@@ -88,7 +90,7 @@ def post_detail(slug):
     post = Post.query.filter(Post.slug==slug).first()
     if post:
         tags = post.tags
-        return render_template('posts/post_detail.html', post=post, tags=tags)
+        return render_template('posts/detail.html', post=post, tags=tags)
     else:
         return redirect(url_for('posts.index'))
 
