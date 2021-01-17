@@ -38,6 +38,7 @@ def create_post():
     form = PostForm()
     return render_template('posts/create.html', form=form)
 
+# http://localhost/blog /<slug>/edit
 @posts.route('/<slug>/edit', methods=['POST', 'GET'])
 @login_required
 def edit_post(slug):
@@ -60,7 +61,8 @@ def edit_post(slug):
 @posts.route('/')
 def index():
     # Pagination
-    page = request.args.get('page')
+    # /blog/?page=
+    page = request.args.get('page') 
     if page and page.isdigit():
         page = int(page)
     else:
@@ -69,7 +71,8 @@ def index():
     # Search
     q = request.args.get('q')
     if q:
-        posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q)).all()
+        posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q))
+        
     else:
         posts = Post.query.order_by(Post.created.desc())
 
