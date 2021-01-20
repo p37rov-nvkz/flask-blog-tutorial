@@ -223,3 +223,7 @@ appengine_config.py
 # Migration
 migrations/
 .vscode/launch.json
+
+# db
+*.db
+
