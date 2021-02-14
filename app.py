@@ -19,11 +19,15 @@ from flask_security import Security
 from flask_security import current_user
 #project
 from config import DevelopmentConfig
+#Misaka
+from flask_misaka import markdown
+from flask_misaka import Misaka
 
 
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
+Misaka(app)
 
 db = SQLAlchemy(app)
 

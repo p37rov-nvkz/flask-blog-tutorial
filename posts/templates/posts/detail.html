@@ -18,6 +18,6 @@
         {% endfor %}
     </div>
     <div class="main-content">
-        {{ post.body }}
+        {{ post.body|markdown }}
     </div>
 {% endblock %}
