@@ -22,11 +22,11 @@ DB_USER, DB_PASSWORD, DB_NAME
 4. db.create_all()
 
 #Выполнение миграций
-    #Первоначальная инициализация
+    ##Первоначальная инициализация
         1. python manage.py db init
-    #Создание миграции
+    ##Создание миграции
         1. python manage.py db migrate
-    #Выполнение миграции
+    ##Выполнение миграции
         1. python manage.py db upgrade
 
 #Создание пользователя
