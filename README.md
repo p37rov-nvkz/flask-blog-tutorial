@@ -21,13 +21,14 @@ DB_USER, DB_PASSWORD, DB_NAME
 3. from app import db
 4. db.create_all()
 
-#Выполнение миграций
-    ##Первоначальная инициализация
-        1. python manage.py db init
-    ##Создание миграции
-        1. python manage.py db migrate
-    ##Выполнение миграции
-        1. python manage.py db upgrade
+Первоначальная инициализация
+python manage.py db init
+
+Создание миграции
+python manage.py db migrate
+
+Выполнение миграции
+python manage.py db upgrade
 
 #Создание пользователя
 1. from app import db
